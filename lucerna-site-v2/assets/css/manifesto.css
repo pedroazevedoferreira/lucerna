@@ -1,0 +1,82 @@
+/* Lucerna v2 — manifesto "a luz que guia": as palavras acendem conforme a rolagem. */
+.manifesto-luz {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 115vh;
+  display: grid; place-items: center;
+  padding: clamp(96px, 14vh, 160px) 0;
+  background: #0b1f25; color: var(--offwhite);
+}
+/* foto noturna ao fundo, com zoom lento */
+.manifesto-luz-bg {
+  position: absolute; inset: -4%; z-index: -3;
+  background: url("../img/contato-refugio-1600.webp") 70% 50% / cover no-repeat;
+  opacity: .32;
+  transform: scale(calc(1.12 - var(--m, 0) * .12));
+  filter: saturate(1.1);
+}
+.manifesto-luz::before {           /* véu escuro */
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background:
+    linear-gradient(180deg, #0b1f25 0%, rgba(11, 31, 37, .55) 30%, rgba(11, 31, 37, .6) 70%, #0b1f25 100%);
+}
+.manifesto-luz::after {            /* brilho dourado que sobe com a rolagem */
+  content: ""; position: absolute; z-index: -1;
+  left: 50%; top: calc(85% - var(--m, 0) * 45%);
+  width: min(1100px, 130vw); aspect-ratio: 1; translate: -50% -50%;
+  background: radial-gradient(circle, rgba(232, 189, 97, .30) 0%, rgba(232, 189, 97, .10) 35%, rgba(232, 189, 97, 0) 65%);
+  opacity: calc(.35 + var(--m, 0) * .65);
+  pointer-events: none;
+}
+
+.manifesto-luz-inner {
+  position: relative; display: grid; justify-items: center; gap: clamp(26px, 4vh, 40px);
+  max-width: 1080px; margin: 0 auto; padding-inline: 24px; text-align: center;
+}
+.manifesto-luz .eyebrow {
+  display: inline-flex; align-items: center; gap: 14px; color: var(--champagne);
+}
+.manifesto-luz .eyebrow::before, .manifesto-luz .eyebrow::after {
+  content: ""; width: 44px; height: 1px; background: currentColor; opacity: .6;
+}
+/* lanterna */
+.manifesto-lanterna { width: 46px; height: 46px; color: var(--champagne); filter: drop-shadow(0 0 14px rgba(232, 189, 97, .7)); }
+.manifesto-lanterna .chama { transform-origin: 50% 70%; animation: manifesto-chama 2.6s ease-in-out infinite; }
+@keyframes manifesto-chama { 0%, 100% { transform: scale(1); opacity: .95; } 50% { transform: scale(1.12, .92); opacity: .75; } }
+
+.manifesto-texto {
+  margin: 0;
+  font-family: var(--f-titulo); font-weight: 500;
+  font-size: clamp(1.75rem, 4.1vw, 3.45rem); line-height: 1.22; letter-spacing: -.01em;
+  text-wrap: balance;
+}
+.manifesto-texto .w {
+  display: inline-block;
+  color: rgba(243, 240, 232, .16);
+  transition: color .5s ease, text-shadow .6s ease, transform .5s ease;
+}
+.manifesto-texto .w.on { color: var(--offwhite); }
+.manifesto-texto .w.dest.on {
+  color: var(--champagne);
+  text-shadow: 0 0 22px rgba(232, 189, 97, .55), 0 0 2px rgba(232, 189, 97, .9);
+}
+.manifesto-assinatura {
+  display: grid; justify-items: center; gap: 16px;
+  font-size: .82rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--areia);
+  opacity: calc(var(--m, 0) * 1.6 - .6);
+}
+.manifesto-assinatura::before {
+  content: ""; width: calc(var(--m, 0) * 140px); height: 1px;
+  background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+}
+.manifesto-assinatura strong { color: var(--champagne); font-weight: 700; }
+
+/* sem JS ou com menos movimento: tudo aceso, sem efeitos */
+html:not(.js) .manifesto-texto .w { color: var(--offwhite); }
+html:not(.js) .manifesto-assinatura { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-texto .w { color: var(--offwhite); }
+  .manifesto-texto .w.dest { color: var(--champagne); }
+  .manifesto-assinatura { opacity: 1; }
+  .manifesto-luz { min-height: 0; }
+}
