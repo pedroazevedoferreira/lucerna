@@ -1,0 +1,229 @@
+/* Lucerna v2 — primeira tela da página inicial.
+   Complementa styles.css (v1) sem alterá-lo. Usa a mesma paleta, fontes e o tempo de entrada da v1.
+   1. Hero "janela da casa": a foto aparece recortada no formato de uma casa, com contorno
+      dourado que se desenha na abertura; ao rolar, a janela se abre até a tela cheia.
+      Dentro dela, as fotos se revezam com zoom lento.
+   2. Faixa "Por dentro da parede": substitui a faixa de ícones. */
+
+/* =========================================================
+   1. Janela da casa
+   ========================================================= */
+.hero.hero--moldura {
+  position: relative; overflow: visible;
+  height: 220vh;                       /* trilho de rolagem: a janela abre nos primeiros ~100vh */
+  background: var(--bg); color: var(--texto);
+}
+.hero.hero--moldura::before { content: none; }
+html:not(.js) .hero.hero--moldura { height: auto; }
+
+.moldura-sticky {
+  position: sticky; top: 0;
+  height: 100vh; height: 100svh; min-height: 560px;
+  overflow: hidden;
+}
+
+/* ---------- foto recortada ---------- */
+.moldura-photo {
+  position: absolute; inset: 0; z-index: 1;
+  /* recorte de reserva (sem JS); o JS calcula o recorte exato e o anima ao rolar */
+  clip-path: var(--clip, polygon(50% 40%, 74% 54%, 74% 95%, 26% 95%, 26% 54%));
+  background: var(--areia);
+  animation: moldura-photo-in 1.3s ease calc(var(--hero-start) + .9s) both;
+}
+@keyframes moldura-photo-in { from { opacity: 0; } to { opacity: 1; } }
+.moldura-slides { position: absolute; inset: 0; }
+/* o JS posiciona e dimensiona cada foto: com a janela fechada, a foto inteira fica afastada e
+   centrada na casa; ao abrir, ela se aproxima até cobrir a tela (como uma câmera entrando) */
+.moldura-slide {
+  position: absolute; inset: 0;
+  transform-origin: 50% 50%;
+  opacity: 0; visibility: hidden;
+  transition: opacity 1.4s ease, visibility 0s linear 1.4s;
+}
+.moldura-slide.is-active { opacity: 1; visibility: visible; transition: opacity 1.4s ease, visibility 0s; }
+html:not(.js) .moldura-slide:not(:first-child) { display: none; }
+.moldura-slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+/* com JS, a imagem inteira (sem corte) fica centrada na área; o recorte é só o da janela */
+.js .moldura-slide img { position: absolute; max-width: none; object-fit: fill; }
+/* zoom lento de cinema em cada foto */
+.moldura-slide.is-active img { animation: moldura-kenburns 9s cubic-bezier(.2, .5, .3, 1) both; }
+@keyframes moldura-kenburns { from { transform: scale(1.09); } to { transform: none; } }
+
+/* escurece a base da foto quando ela está aberta, para os controles e a nota ficarem legíveis */
+.moldura-shade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(12, 28, 24, 0) 55%, rgba(12, 28, 24, .55) 100%);
+  opacity: var(--shade, 0);
+}
+
+/* ---------- traço de arquiteto: contorno da casa e linha do chão ---------- */
+.moldura-lines {
+  position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%;
+  pointer-events: none; overflow: visible;
+  opacity: var(--lines, 1);
+}
+.moldura-outline, .moldura-ground { fill: none; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.moldura-outline {
+  stroke: var(--ouro-escuro); stroke-width: 1.5; stroke-linejoin: round;
+  animation: moldura-draw 1.7s cubic-bezier(.65, .05, .25, 1) calc(var(--hero-start) + .05s) both;
+}
+.moldura-ground {
+  stroke: var(--madeira); stroke-width: 1;
+  animation: moldura-draw 1.4s cubic-bezier(.65, .05, .25, 1) calc(var(--hero-start) + .45s) both;
+}
+@keyframes moldura-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* ---------- título ---------- */
+.moldura-head {
+  position: absolute; z-index: 3; left: 0; right: 0;
+  top: clamp(20px, 5vh, 56px);
+  display: grid; justify-items: center; gap: clamp(10px, 1.8vh, 18px);
+  padding-inline: 24px; text-align: center;
+  opacity: var(--head-o, 1);
+  transform: translateY(var(--head-y, 0px));
+}
+.hero.hero--moldura .moldura-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--cedro); max-width: none;
+  animation: hero-rise .9s cubic-bezier(.2, .7, .2, 1) calc(var(--hero-start) + .1s) both;
+}
+.moldura-eyebrow span { color: var(--ouro-escuro); }
+.moldura-eyebrow span::after { content: ""; display: inline-block; width: 28px; height: 1px; margin-left: 12px; vertical-align: middle; background: var(--madeira); }
+
+.hero.hero--moldura h1 {
+  max-width: none; color: var(--floresta);
+  font-size: clamp(2.3rem, min(5.4vw, 8.4vh), 5rem);
+  line-height: 1.02; letter-spacing: -.015em;
+  animation: none;
+}
+.moldura-line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+.moldura-line > span {
+  display: inline-block;
+  animation: moldura-line-up 1.1s cubic-bezier(.2, .8, .2, 1) calc(var(--hero-start) + .25s) both;
+}
+.moldura-line + .moldura-line > span { animation-delay: calc(var(--hero-start) + .4s); }
+@keyframes moldura-line-up { from { transform: translateY(108%); } to { transform: none; } }
+
+.hero.hero--moldura .moldura-lead {
+  max-width: 46ch; font-size: clamp(.98rem, 1.2vw, 1.12rem); line-height: 1.55;
+  color: var(--texto-suave);
+  animation: hero-rise 1s cubic-bezier(.2, .7, .2, 1) calc(var(--hero-start) + .65s) both;
+}
+
+/* ---------- controles e nota (cantos inferiores) ---------- */
+.moldura-ui {
+  position: absolute; z-index: 3;
+  left: max(24px, calc((100vw - var(--max)) / 2 + 24px)); bottom: calc(var(--ui-off, 0px) + 26px);
+  display: flex; align-items: center; gap: 18px;
+  color: var(--petroleo);
+  transition: color .4s ease;
+  animation: hero-rise 1s cubic-bezier(.2, .7, .2, 1) calc(var(--hero-start) + 1.2s) both;
+}
+html:not(.js) .moldura-ui { display: none; }
+.moldura-count { display: flex; align-items: baseline; gap: 6px; font-variant-numeric: tabular-nums; }
+.moldura-count span { font-family: var(--f-titulo); font-size: 1.9rem; line-height: 1; font-weight: 500; }
+.moldura-count small { font-size: .8rem; font-weight: 700; letter-spacing: .1em; opacity: .7; }
+.moldura-dots { display: flex; }
+.moldura-dot {
+  position: relative; width: 34px; height: 44px; padding: 0;
+  border: 0; background: transparent; color: inherit; cursor: pointer;
+}
+.moldura-dot span {
+  position: absolute; left: 4px; right: 4px; top: 50%; height: 2px; margin-top: -1px;
+  background: currentColor; opacity: .3; overflow: hidden;
+  transition: opacity .3s ease;
+}
+.moldura-dot:hover span { opacity: .6; }
+.moldura-dot[aria-current="true"] span { opacity: 1; background: var(--champagne); }
+/* na troca automática, a linha ativa se enche até a próxima foto */
+.moldura-dot span::after {
+  content: ""; position: absolute; inset: 0; background: var(--ouro-escuro);
+  transform: scaleX(0); transform-origin: left center;
+}
+.is-playing .moldura-dot[aria-current="true"] span { background: rgba(232, 189, 97, .35); }
+.is-playing .moldura-dot[aria-current="true"] span::after { animation: moldura-progress var(--intervalo, 6s) linear forwards; }
+.is-playing.is-held .moldura-dot[aria-current="true"] span::after { animation-play-state: paused; }
+@keyframes moldura-progress { to { transform: scaleX(1); } }
+.moldura-dot:focus-visible { outline-offset: -2px; }
+
+.hero.hero--moldura .moldura-note {
+  position: absolute; z-index: 3;
+  right: max(24px, calc((100vw - var(--max)) / 2 + 24px)); bottom: calc(var(--ui-off, 0px) + 38px);
+  max-width: 30ch; font-size: .72rem; line-height: 1.45; text-align: right;
+  color: var(--texto-suave);
+  transition: color .4s ease;
+  animation: hero-rise 1s cubic-bezier(.2, .7, .2, 1) calc(var(--hero-start) + 1.3s) both;
+}
+.moldura-cue { display: none; }
+
+/* janela aberta: controles e nota passam a ficar sobre a foto */
+.hero--moldura.is-open .moldura-ui { color: var(--offwhite); }
+.hero--moldura.is-open .moldura-dot[aria-current="true"] span::after { background: var(--champagne); }
+.hero.hero--moldura.is-open .moldura-note { color: rgba(243, 240, 232, .85); }
+
+/* ---------- celular ---------- */
+@media (max-width: 760px) {
+  .hero.hero--moldura { height: 190vh; }
+  .moldura-sticky { min-height: 520px; }
+  .moldura-head { padding-inline: 20px; gap: 10px; }
+  .hero.hero--moldura h1 { font-size: clamp(2rem, min(10vw, 6.4vh), 3rem); }
+  .hero.hero--moldura .moldura-lead { font-size: .95rem; }
+  /* acima da barra fixa "Ver projetos / Orçamento" da v1 */
+  .moldura-ui { left: 20px; bottom: calc(var(--ui-off, 0px) + 72px + 50px + env(safe-area-inset-bottom, 0px)); gap: 12px; }
+  .moldura-count span { font-size: 1.5rem; }
+  .moldura-dot { width: 28px; }
+  .hero.hero--moldura .moldura-note {
+    left: 20px; right: 20px; bottom: calc(var(--ui-off, 0px) + 72px + 12px + env(safe-area-inset-bottom, 0px));
+    max-width: none; text-align: left;
+  }
+}
+
+/* menos movimento: sem trilho de rolagem, a janela fica fechada e parada */
+@media (prefers-reduced-motion: reduce) {
+  .hero.hero--moldura { height: auto; }
+}
+
+/* =========================================================
+   2. Faixa "Por dentro da parede"
+   ========================================================= */
+.wall-band { background: var(--faixa); border-bottom: 1px solid var(--linha); }
+.wall-band-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center; gap: 32px 48px;
+  padding-block: 56px;
+}
+.wall-band-text { display: grid; gap: 14px; justify-items: start; }
+.wall-band-text h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+.wall-figure { margin: 0; }
+.wall-svg { display: block; width: 100%; height: auto; max-width: 460px; margin-inline: auto; }
+
+.wall-legend {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 12px;
+  counter-reset: camada;
+}
+.wall-legend li {
+  display: grid; grid-template-columns: 26px 1fr; column-gap: 12px;
+  counter-increment: camada;
+  font-size: .9rem; line-height: 1.45;
+}
+.wall-legend li::before {
+  content: counter(camada);
+  grid-row: span 2;
+  display: grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--petroleo); color: var(--champagne);
+  font-size: .72rem; font-weight: 700;
+}
+.wall-legend strong { color: var(--floresta); }
+.wall-legend span { color: var(--texto-suave); }
+
+@media (max-width: 1100px) {
+  .wall-band-grid { grid-template-columns: 1fr 1fr; }
+  .wall-band-text { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .wall-band-grid { grid-template-columns: 1fr; padding-block: 44px; }
+}
