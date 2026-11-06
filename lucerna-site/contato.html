@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contato | Lucerna</title>
+  <meta name="description" content="Fale com a Lucerna sobre o seu terreno e a casa que você imagina.">
+  <meta name="theme-color" content="#F3F0E8">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css?v=4">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/config.js?v=4" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Lucerna, página inicial">
+        <!-- Logo aprovada pelo cliente: aguardando o arquivo original limpo. Configure em assets/js/config.js -->
+        <span class="logo-slot" data-logo-slot="claro">LUCERNA <small data-pendente>logo pendente</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        Menu
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Principal">
+        <ul>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="light-steel-frame.html">Light Steel Frame</a></li>
+          <li><a href="a-lucerna.html">A Lucerna</a></li>
+          <li><a href="contato.html" aria-current="page">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="page-intro" aria-labelledby="titulo">
+      <div class="container">
+        <span class="eyebrow">Contato</span>
+        <h1 id="titulo">Conte onde fica o seu lugar.</h1>
+        <p class="lead">Fale sobre o terreno, a cidade e o que você imagina para a casa. Deixe um telefone para retorno.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Formulário e canais de contato" style="padding-top: clamp(40px, 6vw, 72px)">
+      <div class="container contact-layout">
+        <div>
+          <div class="form-summary" data-form-sumario tabindex="-1" role="alert" hidden>
+            <h2>Corrija os campos para enviar</h2>
+            <ul></ul>
+          </div>
+
+          <form class="form" data-contato-form novalidate aria-describedby="form-obrigatorios">
+            <p id="form-obrigatorios" class="field hint" style="margin:0">Todos os campos são obrigatórios.</p>
+
+            <div class="field">
+              <label for="campo-nome">Nome</label>
+              <input id="campo-nome" name="nome" type="text" autocomplete="name" required aria-describedby="erro-nome">
+              <p id="erro-nome" class="field-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="campo-telefone">Telefone ou WhatsApp</label>
+              <span id="dica-telefone" class="hint">Com DDD. Ex.: (00) 00000-0000</span>
+              <input id="campo-telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel-national" required aria-describedby="dica-telefone erro-telefone">
+              <p id="erro-telefone" class="field-error" aria-live="polite"></p>
+            </div>
+
+            <fieldset class="field" style="border:0;margin:0;padding:0">
+              <legend class="visually-hidden">Cidade e UF</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="campo-cidade">Cidade</label>
+                  <input id="campo-cidade" name="cidade" type="text" autocomplete="address-level2" required aria-describedby="erro-cidade">
+                </div>
+                <div class="field">
+                  <label for="campo-uf">UF</label>
+                  <select id="campo-uf" name="uf" autocomplete="address-level1" required aria-describedby="erro-uf">
+                    <option value="">Selecione</option>
+                    <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option>
+                    <option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option>
+                    <option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option>
+                    <option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                    <option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option>
+                    <option>SE</option><option>TO</option>
+                  </select>
+                </div>
+              </div>
+              <p id="erro-cidade" class="field-error" aria-live="polite"></p>
+              <p id="erro-uf" class="field-error" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="field">
+              <label for="campo-mensagem">Mensagem</label>
+              <span id="dica-mensagem" class="hint">Conte sobre o terreno, o tipo de casa e o que é importante para você.</span>
+              <textarea id="campo-mensagem" name="mensagem" rows="6" required aria-describedby="dica-mensagem erro-mensagem"></textarea>
+              <p id="erro-mensagem" class="field-error" aria-live="polite"></p>
+            </div>
+
+            <div>
+              <button class="btn" type="submit">Enviar mensagem</button>
+            </div>
+          </form>
+
+          <p class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite" style="margin-top:20px"></p>
+          <p class="pendente" data-pendente style="margin-top:20px"><strong>Pendente</strong>Destino do formulário (e-mail, sistema ou WhatsApp) e texto da política de privacidade a definir com a Lucerna.</p>
+        </div>
+
+        <aside class="contact-aside" aria-labelledby="canais-titulo">
+          <figure class="figure">
+            <img src="assets/img/contato-refugio-1024.webp"
+                 srcset="assets/img/contato-refugio-640.webp 640w, assets/img/contato-refugio-1024.webp 1024w, assets/img/contato-refugio-1600.webp 1600w"
+                 sizes="(max-width: 900px) 100vw, 520px" width="1774" height="887" decoding="async"
+                 style="--ratio: 4 / 3; --foco: 74% 50%"
+                 alt="Entrada de uma casa com beiral de madeira e colunas de pedra ao anoitecer, com caminho de pedras iluminado entre a mata">
+            <figcaption>Imagem ilustrativa.</figcaption>
+          </figure>
+          <div>
+            <h2 id="canais-titulo" class="eyebrow" style="margin-bottom:12px">Canais de atendimento</h2>
+            <ul class="contact-channels" data-canais data-com-rotulo></ul>
+            <p class="pendente" data-pendente data-sem-canais><strong>Pendente</strong>Telefone, WhatsApp, e-mail, endereço e redes sociais aguardam confirmação da Lucerna.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer on-dark">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-slot" data-logo-slot="escuro">LUCERNA <small data-pendente>logo pendente</small></span>
+          <p class="footer-slogan">Construindo o seu refúgio.</p>
+          <p>Casas e chalés em Light Steel Frame, desenhados para o terreno e o jeito de viver de cada pessoa.</p>
+        </div>
+        <nav aria-label="Rodapé">
+          <h2>Navegação</h2>
+          <ul>
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="index.html#como-funciona">Como funciona</a></li>
+            <li><a href="light-steel-frame.html">Light Steel Frame</a></li>
+            <li><a href="a-lucerna.html">A Lucerna</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Contato</h2>
+          <ul data-canais></ul>
+          <p class="pendente" data-pendente data-sem-canais><strong>Pendente</strong>Telefone, e-mail, endereço e redes sociais aguardam confirmação.</p>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>© <span data-ano>2026</span> Lucerna</p>
+        <p>Imagens ilustrativas geradas por IA. Não retratam obras executadas pela Lucerna.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
