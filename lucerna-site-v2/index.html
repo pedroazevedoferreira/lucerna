@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lucerna | Casas e chalés em Light Steel Frame</title>
+  <meta name="description" content="Casas e chalés em Light Steel Frame, com conforto, eficiência e cuidado em cada detalhe.">
+  <meta name="theme-color" content="#102B33">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20">
+  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    /* Abertura animada: só na primeira visita da sessão e só para quem não pediu menos movimento. */
+    (function () {
+      try {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (sessionStorage.getItem("lucerna-intro")) return;
+        sessionStorage.setItem("lucerna-intro", "1");
+        document.documentElement.classList.add("intro-on", "intro-lock");
+      } catch (e) { /* sem armazenamento: segue sem a abertura */ }
+    })();
+  </script>
+</head>
+<body>
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <svg class="intro-mark" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+        <path class="draw d-mountain" pathLength="1" d="M6 58C22 46 34 34 48 20C55 13 61 12 67 19C72 25 76 27 81 25C90 33 102 45 114 58" stroke-width="2.6"/>
+        <path class="draw d-frame" pathLength="1" d="M42 70L60 36L78 70" stroke-width="2.6"/>
+        <path class="draw d-chimney" pathLength="1" d="M71 50V42H76V58" stroke-width="2.2"/>
+        <rect class="draw d-window" pathLength="1" x="56" y="57" width="8" height="8" stroke-width="1.8"/>
+        <path class="draw d-ground" pathLength="1" d="M20 73Q60 65 100 73" stroke-width="2.2"/>
+        <path class="d-pines" d="M30 51l-5 8h3l-4 7h12l-4-7h3z" fill="currentColor" stroke="none"/>
+        <path class="d-pines d-pines-2" d="M88 51l-5 8h3l-4 7h12l-4-7h3z" fill="currentColor" stroke="none"/>
+      </svg>
+      <p class="intro-word">LUCERNA</p>
+      <p class="intro-tag"><span>CASAS E CHALÉS</span></p>
+    </div>
+  </div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Lucerna, casas e chalés. Ir para a página inicial">
+        <span class="brand-mark"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 58C22 46 34 34 48 20C55 13 61 12 67 19C72 25 76 27 81 25C90 33 102 45 114 58" stroke-width="5"/><path d="M42 70L60 36L78 70" stroke-width="5"/><path d="M71 50V42H76V58" stroke-width="4"/><rect x="56" y="57" width="8" height="8" stroke-width="3"/><path d="M20 73Q60 65 100 73" stroke-width="4"/><path d="M30 51l-5 8h3l-4 7h12l-4-7h3z M88 51l-5 8h3l-4 7h12l-4-7h3z" fill="currentColor" stroke-width="1"/></svg></span>
+        <span class="brand-text" aria-hidden="true"><span class="brand-name">LUCERNA</span><span class="brand-tag">CASAS E CHALÉS</span></span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Principal">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="pacotes.html">Pacotes</a></li>
+          <li><a href="light-steel-frame.html">Light Steel Frame</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li class="nav-cta-mobile"><a class="btn btn-primary" href="contato.html">Solicitar orçamento</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <a class="btn btn-primary header-cta" href="contato.html">Solicitar orçamento</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero-media"><img src="assets/img/home-hero-1600.webp" srcset="assets/img/home-hero-800.webp 800w, assets/img/home-hero-1600.webp 1600w" sizes="100vw" width="1600" height="900" fetchpriority="high" loading="eager" decoding="async" alt="Chalé A-frame de madeira e vidro em meio à mata, com serra ao fundo" style="object-position:72% 50%"></div>
+      <div class="container">
+        <h1 id="hero-titulo">Seu refúgio, construído com precisão.</h1>
+        <hr class="rule">
+        <p>Casas e chalés em Light Steel Frame, com conforto, eficiência e cuidado em cada detalhe.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="projetos.html">Conheça nossos projetos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-light" href="contato.html">Fale com um especialista</a>
+        </div>
+      </div>
+      <span class="scroll-cue" aria-hidden="true"></span>
+    </section>
+
+    <section class="benefits" aria-label="Diferenciais">
+      <div class="container">
+        <ul>
+          <li data-reveal><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 32C8 18 16 9 33 7c1 17-8 26-22 26"/><path d="M8 32L22 18"/></svg><span>Projeto personalizado</span></li>
+          <li data-reveal style="--d:.12s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L35 13 20 20 5 13z"/><path d="M5 20l15 7 15-7"/><path d="M5 27l15 7 15-7"/></svg><span>Construção industrializada</span></li>
+          <li data-reveal style="--d:.24s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="28" height="25" rx="3"/><path d="M6 16h28M13 5v7M27 5v7"/><path d="M14 25l4 4 8-8"/></svg><span>Mais previsibilidade na obra</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="novo-jeito">
+      <div class="container split">
+        <div class="split-text" data-reveal="left">
+          <span class="eyebrow">Light Steel Frame</span>
+          <h2 id="novo-jeito">Um novo jeito de construir seu lar</h2>
+          <hr class="rule">
+          <p class="lead">No Light Steel Frame, a estrutura da casa é feita de perfis leves de aço, montados com precisão a partir de um projeto detalhado. As paredes são formadas por camadas, cada uma com a sua função.</p>
+          <ul class="checklist">
+            <li>Projeto completo definido antes de a obra começar</li>
+            <li>Obra seca, com menos água e menos entulho no terreno</li>
+            <li>Instalações planejadas dentro das paredes</li>
+          </ul>
+          <div><a class="btn btn-outline" href="light-steel-frame.html">Entenda o sistema <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+        <figure class="figure split-media" data-reveal="right" style="--d:.1s">
+          <img src="assets/img/interior-conforto-1600.webp" srcset="assets/img/interior-conforto-800.webp 800w, assets/img/interior-conforto-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 600px" width="1600" height="900" loading="lazy" decoding="async" alt="Sala de estar clara com forro de madeira, sofá e janelas amplas para o jardim" style="object-position:40% 55%">
+          <figcaption>Imagem ilustrativa</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--sand" aria-labelledby="projetos-titulo">
+      <div class="container">
+        <div class="section-head section-head--row" data-reveal>
+          <div style="display:grid;gap:14px">
+            <span class="eyebrow">Projetos em destaque</span>
+            <h2 id="projetos-titulo">Casas e chalés para cada estilo de vida</h2>
+          </div>
+          <a class="btn btn-outline" href="projetos.html">Ver todos os projetos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="projects" data-projects-preview></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="pacotes-titulo">
+      <div class="container">
+        <div class="section-head section-head--row" data-reveal>
+          <div style="display:grid;gap:14px">
+            <span class="eyebrow">Pacotes</span>
+            <h2 id="pacotes-titulo">Você escolhe até onde a gente vai</h2>
+            <p class="lead">Do esqueleto de aço à casa pronta para morar. Cada pacote inclui tudo do anterior.</p>
+          </div>
+          <a class="btn btn-outline" href="pacotes.html">Comparar pacotes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="packages" data-pacotes-resumo></div>
+      </div>
+    </section>
+
+    <section class="section section--sand" aria-labelledby="como-titulo">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Como funciona</span>
+          <h2 id="como-titulo">Do primeiro contato às chaves</h2>
+        </div>
+        <ol class="timeline" data-reveal>
+          <li><h3>Escolha</h3><p>Você escolhe o projeto e o pacote, ou conta a sua ideia.</p><span class="who">Você</span></li>
+          <li><h3>Análise do terreno</h3><p>Avaliamos o terreno e enviamos o orçamento detalhado.</p><span class="who">Lucerna</span></li>
+          <li><h3>Projeto e aprovação</h3><p>Projetos, ART e documentos para a prefeitura.</p><span class="who">Lucerna e você</span></li>
+          <li><h3>Obra</h3><p>Fundação, estrutura de aço e tudo o que o pacote inclui.</p><span class="who">Lucerna</span></li>
+          <li><h3>Entrega</h3><p>Vistoria com você, manual do proprietário e chaves.</p><span class="who">Lucerna e você</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--dark" aria-labelledby="estrutura-titulo">
+      <div class="container split split--reverse">
+        <div class="split-text" data-reveal="right">
+          <span class="eyebrow">Construção industrializada</span>
+          <h2 id="estrutura-titulo">Precisão desde a estrutura</h2>
+          <p class="lead">Os perfis de aço chegam à obra com medidas definidas no projeto. Isso organiza cada etapa e deixa claro, desde o início, o que será feito e quando.</p>
+          <div><a class="btn btn-gold" href="light-steel-frame.html">Como funciona o sistema <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+        <figure class="figure split-media" data-reveal="left">
+          <img src="assets/img/steel-frame-estrutura-1600.webp" srcset="assets/img/steel-frame-estrutura-800.webp 800w, assets/img/steel-frame-estrutura-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 600px" width="1600" height="900" loading="lazy" decoding="async" alt="Estrutura de perfis de aço galvanizado de uma casa em montagem, com um profissional trabalhando" style="object-position:62% 50%">
+          <figcaption>Imagem ilustrativa</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-titulo">
+      <div class="container">
+        <div class="section-head" data-reveal><span class="eyebrow">Dúvidas</span><h2 id="faq-titulo">Perguntas frequentes</h2></div>
+        <div class="faq" data-reveal>
+          <details><summary>Os preços do site são finais?</summary><p>São valores de partida de cada pacote. O valor final depende da análise do terreno: inclinação, tipo de solo e acesso para a obra mudam o custo da fundação. Neste momento, os valores exibidos são fictícios, para demonstração.</p></details>
+          <details><summary>Quanto tempo leva a obra?</summary><p>Cada projeto mostra um prazo estimado por pacote, em dias corridos, contado a partir da liberação da obra (projeto aprovado e terreno pronto). O tempo de aprovação na prefeitura não entra nessa conta.</p></details>
+          <details><summary>Posso mudar a planta?</summary><p>Ajustes simples, como inverter a planta ou mudar uma janela, entram no projeto. Mudanças maiores são orçadas como projeto personalizado.</p></details>
+          <details><summary>Vocês atendem a minha cidade?</summary><p>Envie o pedido de orçamento com a cidade do terreno. A área de atendimento será confirmada pela equipe.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-titulo">
+      <img src="assets/img/contato-refugio-1600.webp" srcset="assets/img/contato-refugio-800.webp 800w, assets/img/contato-refugio-1600.webp 1600w" sizes="100vw" width="1600" height="900" loading="lazy" decoding="async" alt="" style="object-position:75% 50%">
+      <div class="container">
+        <span class="eyebrow" style="color:var(--champagne)" data-reveal>Vamos conversar</span>
+        <h2 id="cta-titulo" data-reveal style="--d:.1s">Seu refúgio começa com uma conversa.</h2>
+        <p data-reveal style="--d:.2s">Conte onde fica o seu terreno e o que você imagina. Um especialista da Lucerna ajuda a definir o melhor caminho.</p>
+        <a class="btn btn-gold" href="contato.html" data-reveal style="--d:.3s">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div style="display:grid;gap:16px;align-content:start">
+          <a class="brand" href="index.html" aria-label="Lucerna, página inicial">
+            <span class="brand-mark" style="color:var(--champagne)"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 58C22 46 34 34 48 20C55 13 61 12 67 19C72 25 76 27 81 25C90 33 102 45 114 58" stroke-width="5"/><path d="M42 70L60 36L78 70" stroke-width="5"/><path d="M71 50V42H76V58" stroke-width="4"/><rect x="56" y="57" width="8" height="8" stroke-width="3"/><path d="M20 73Q60 65 100 73" stroke-width="4"/><path d="M30 51l-5 8h3l-4 7h12l-4-7h3z M88 51l-5 8h3l-4 7h12l-4-7h3z" fill="currentColor" stroke-width="1"/></svg></span>
+            <span class="brand-text" aria-hidden="true"><span class="brand-name">LUCERNA</span><span class="brand-tag">CASAS E CHALÉS</span></span>
+          </a>
+          <p>Casas e chalés em Light Steel Frame, com conforto, eficiência e cuidado em cada detalhe.</p>
+          <div><a class="btn btn-gold" href="contato.html">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+        <div>
+          <h2>Navegação</h2>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="pacotes.html">Pacotes</a></li>
+            <li><a href="light-steel-frame.html">Light Steel Frame</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contato</h2>
+          <ul>
+            <li data-config-wrap hidden>Telefone: <a data-config="telefone" href="#"></a></li>
+            <li data-config-wrap hidden>WhatsApp: <a data-config="whatsapp" href="#"></a></li>
+            <li data-config-wrap hidden>E-mail: <a data-config="email" href="#"></a></li>
+            <li data-config-wrap hidden><a data-config="instagram" data-config-keep-text href="#">Instagram</a></li>
+            <li data-config-wrap hidden><a data-config="facebook" data-config-keep-text href="#">Facebook</a></li>
+            <li data-config-wrap hidden>Atendimento: <span data-config="areaAtendimento"></span></li>
+            <li><a href="contato.html">Enviar mensagem</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Lucerna Casas e Chalés<span data-config-wrap hidden> · CNPJ <span data-config="cnpj"></span></span></span>
+        <span>Imagens ilustrativas geradas por IA. Preços e prazos fictícios, para demonstração.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+  <div class="mobile-bar"><a class="btn btn-outline" href="projetos.html">Ver projetos</a><a class="btn btn-primary" href="contato.html">Orçamento</a></div>
+
+  <script src="assets/js/config.js?v=20"></script>
+  <script src="assets/js/produtos.js?v=20"></script>
+  <script src="assets/js/main.js?v=20"></script>
+</body>
+</html>
