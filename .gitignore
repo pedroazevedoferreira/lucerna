@@ -1,0 +1,14 @@
+# Só entram no repositório: README, docs, fluxo de publicação e as duas versões do site.
+/*
+!/README.md
+!/.gitignore
+!/docs/
+!/.github/
+!/lucerna-site/
+!/lucerna-site-v2/
+
+# Referências do cliente (incluem a prévia da logo com marca d'água e o conceito de logo rejeitado)
+**/referencias/
+
+# Configuração local do editor/agente
+.claude/
