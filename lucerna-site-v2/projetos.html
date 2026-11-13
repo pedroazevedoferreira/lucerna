@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Projetos | Lucerna Casas e Chalés</title>
+  <title>Projetos | Green House Casas e Chalés</title>
   <meta name="description" content="Catálogo de casas e chalés em Light Steel Frame com planta, ficha técnica e preço por pacote.">
   <meta name="theme-color" content="#102B33">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css?v=20">
+  <link rel="stylesheet" href="assets/css/paginas-v2.css?v=21">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -18,9 +19,9 @@
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html" aria-label="Lucerna, casas e chalés. Ir para a página inicial">
+      <a class="brand" href="index.html" aria-label="Green House Casas e Chalés. Ir para a página inicial">
         <span class="brand-mark"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 58C22 46 34 34 48 20C55 13 61 12 67 19C72 25 76 27 81 25C90 33 102 45 114 58" stroke-width="5"/><path d="M42 70L60 36L78 70" stroke-width="5"/><path d="M71 50V42H76V58" stroke-width="4"/><rect x="56" y="57" width="8" height="8" stroke-width="3"/><path d="M20 73Q60 65 100 73" stroke-width="4"/><path d="M30 51l-5 8h3l-4 7h12l-4-7h3z M88 51l-5 8h3l-4 7h12l-4-7h3z" fill="currentColor" stroke-width="1"/></svg></span>
-        <span class="brand-text" aria-hidden="true"><span class="brand-name">LUCERNA</span><span class="brand-tag">CASAS E CHALÉS</span></span>
+        <span class="brand-text" aria-hidden="true"><span class="brand-name">GREEN HOUSE</span><span class="brand-tag">CASAS E CHALÉS</span></span>
       </a>
       <nav id="site-nav" class="site-nav" aria-label="Principal">
         <ul class="nav-list">
@@ -45,11 +46,18 @@
 
     <nav class="crumbs" aria-label="Você está em"><div class="container"><ol><li><a href="index.html">Início</a></li><li><span aria-current="page" data-crumb-atual>Projetos</span></li></ol></div></nav>
   <main id="conteudo" tabindex="-1">
-    <section class="page-hero page-hero--plain" aria-labelledby="titulo">
-      <div class="container">
-        <span class="eyebrow" data-reveal>Catálogo</span>
-        <h1 id="titulo" data-reveal style="--d:.08s">Encontre o projeto que combina com você</h1>
-        <p data-reveal style="--d:.16s">Filtre por tipo, tamanho e valor. Cada projeto mostra planta, ficha técnica e o preço de cada pacote.</p>
+    <section class="page-hero page-hero--janela" aria-labelledby="titulo">
+      <div class="container janela-grid">
+        <div class="janela-texto">
+          <span class="eyebrow" data-reveal>Catálogo</span>
+          <h1 id="titulo" data-reveal style="--d:.08s">Encontre o projeto que combina com você</h1>
+          <p data-reveal style="--d:.16s">Filtre por tipo, tamanho e valor. Os chalés vão de 15 m² a 120 m². Cada projeto mostra planta, ficha técnica e o preço de cada pacote.</p>
+        </div>
+        <figure class="janela-foto">
+          <div class="janela-recorte"><img src="assets/img/projeto-chale-aframe-1600.webp" srcset="assets/img/projeto-chale-aframe-800.webp 800w, assets/img/projeto-chale-aframe-1600.webp 1536w" sizes="(max-width: 860px) 90vw, 560px" width="1536" height="1024" fetchpriority="high" decoding="async" alt="Chalé A-frame com telhado verde e fachada de vidro iluminada ao entardecer" style="object-position:45% 55%"></div>
+          <svg class="janela-traco" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="50,0 100,34 100,100 0,100 0,34" pathLength="1"/><line x1="-14" y1="100" x2="114" y2="100" pathLength="1"/></svg>
+          <figcaption>Imagem ilustrativa</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -72,7 +80,7 @@
             </div></fieldset>
             <fieldset class="filter-group"><legend>Área construída</legend><div class="chips">
               <button type="button" class="chip" data-filter="area" data-value="todas" aria-pressed="true">Todas</button>
-              <button type="button" class="chip" data-filter="area" data-value="ate80" aria-pressed="false">Até 80 m²</button>
+              <button type="button" class="chip" data-filter="area" data-value="ate80" aria-pressed="false">15 a 80 m²</button>
               <button type="button" class="chip" data-filter="area" data-value="80a120" aria-pressed="false">80 a 120 m²</button>
               <button type="button" class="chip" data-filter="area" data-value="acima120" aria-pressed="false">Acima de 120 m²</button>
             </div></fieldset>
@@ -122,7 +130,7 @@
       <div class="container">
         <span class="eyebrow" style="color:var(--champagne)" data-reveal>Vamos conversar</span>
         <h2 id="cta-titulo" data-reveal style="--d:.1s">Seu refúgio começa com uma conversa.</h2>
-        <p data-reveal style="--d:.2s">Conte onde fica o seu terreno e o que você imagina. Um especialista da Lucerna ajuda a definir o melhor caminho.</p>
+        <p data-reveal style="--d:.2s">Conte onde fica o seu terreno e o que você imagina. Um especialista da Green House ajuda a definir o melhor caminho.</p>
         <a class="btn btn-gold" href="contato.html" data-reveal style="--d:.3s">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </section>
@@ -132,9 +140,9 @@
     <div class="container">
       <div class="footer-grid">
         <div style="display:grid;gap:16px;align-content:start">
-          <a class="brand" href="index.html" aria-label="Lucerna, página inicial">
+          <a class="brand" href="index.html" aria-label="Green House Casas e Chalés, página inicial">
             <span class="brand-mark" style="color:var(--champagne)"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 58C22 46 34 34 48 20C55 13 61 12 67 19C72 25 76 27 81 25C90 33 102 45 114 58" stroke-width="5"/><path d="M42 70L60 36L78 70" stroke-width="5"/><path d="M71 50V42H76V58" stroke-width="4"/><rect x="56" y="57" width="8" height="8" stroke-width="3"/><path d="M20 73Q60 65 100 73" stroke-width="4"/><path d="M30 51l-5 8h3l-4 7h12l-4-7h3z M88 51l-5 8h3l-4 7h12l-4-7h3z" fill="currentColor" stroke-width="1"/></svg></span>
-            <span class="brand-text" aria-hidden="true"><span class="brand-name">LUCERNA</span><span class="brand-tag">CASAS E CHALÉS</span></span>
+            <span class="brand-text" aria-hidden="true"><span class="brand-name">GREEN HOUSE</span><span class="brand-tag">CASAS E CHALÉS</span></span>
           </a>
           <p>Casas e chalés em Light Steel Frame, com conforto, eficiência e cuidado em cada detalhe.</p>
           <div><a class="btn btn-gold" href="contato.html">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
@@ -164,7 +172,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Lucerna Casas e Chalés<span data-config-wrap hidden> · CNPJ <span data-config="cnpj"></span></span></span>
+        <span>© <span data-year>2026</span> Green House Casas e Chalés<span data-config-wrap hidden> · CNPJ <span data-config="cnpj"></span></span></span>
         <span>Imagens ilustrativas geradas por IA. Preços e prazos fictícios, para demonstração.</span>
       </div>
     </div>

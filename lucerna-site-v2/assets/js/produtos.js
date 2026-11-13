@@ -1,5 +1,5 @@
 /*
- * Catálogo da Lucerna.
+ * Catálogo da Green House.
  * ATENÇÃO: áreas, plantas, preços e prazos abaixo são FICTÍCIOS, criados para demonstração.
  * Substitua pelos dados reais antes de publicar. Os preços "a partir de" são calculados
  * pela área × valor por m² de cada pacote (VALOR_M2) e arredondados para o milhar.

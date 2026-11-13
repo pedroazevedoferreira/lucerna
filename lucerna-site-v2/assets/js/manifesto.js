@@ -1,4 +1,4 @@
-/* Lucerna v2 — manifesto: as palavras acendem uma a uma conforme a seção atravessa a tela. */
+/* Green House v2 — manifesto: as palavras acendem uma a uma conforme a seção atravessa a tela. */
 (function () {
   "use strict";
   var sec = document.querySelector("[data-manifesto]");

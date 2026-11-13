@@ -1,4 +1,4 @@
-/* Lucerna v2 — "janela da casa" na página inicial.
+/* Green House v2 — "janela da casa" na página inicial.
    1. Recorta a foto no formato de uma casa (telhado de duas águas) logo abaixo do título,
       com contorno dourado e linha do chão. Ao rolar, a janela se abre até a tela cheia.
    2. Dentro dela, as fotos trocam sozinhas a cada 6 s, com zoom lento.

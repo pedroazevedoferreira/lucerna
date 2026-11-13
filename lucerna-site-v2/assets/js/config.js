@@ -1,5 +1,5 @@
 /*
- * Dados comerciais da Lucerna.
+ * Dados comerciais da Green House.
  * Preencha cada campo quando o cliente confirmar. Campos vazios não aparecem no site
  * (no Contato, aparecem como "A informar").
  *

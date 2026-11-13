@@ -1,4 +1,4 @@
-# Lucerna — site
+# Green House — site
 
 Site estático (HTML, CSS e JavaScript, sem etapa de build). Abra `index.html` por um servidor local, por exemplo:
 

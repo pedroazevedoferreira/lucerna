@@ -175,7 +175,7 @@
     var faixa = $("#f-preco"), faixaOut = $("#f-preco-out"), ordem = $("#f-ordem"), cont = $("[data-results-count]"), vazio = $("[data-empty]");
     faixa.min = minP; faixa.max = maxP; faixa.step = 10000; faixa.value = maxP; faixaOut.textContent = L.brl(maxP);
 
-    var AREAS = { todas: [0, 9999], ate80: [0, 80], "80a120": [80, 120], acima120: [120, 9999] };
+    var AREAS = { todas: [0, 9999], ate80: [15, 80], "80a120": [80, 120], acima120: [120, 9999] };
     var aplicar = function () {
       var lista = L.PROJETOS.filter(function (p) {
         var a = AREAS[F.area];
@@ -251,7 +251,7 @@
   var detalhe = $("[data-projeto]");
   if (detalhe && L) {
     var p = L.porId(params.get("id")) || L.PROJETOS[0];
-    document.title = p.nome + " | Lucerna Casas e Chalés";
+    document.title = p.nome + " | Green House Casas e Chalés";
     $$("[data-crumb-atual]").forEach(function (el) { el.textContent = p.nome; });
 
     var abas = [{ id: "fachada", rot: "Fachada" }].concat(p.plantas.map(function (pl, i) { return { id: "planta-" + i, rot: "Planta" + (p.plantas.length > 1 ? " · " + pl.nome : "") }; }));
@@ -296,7 +296,7 @@
       '</div></section>' +
 
       '<section class="section section--sand" aria-labelledby="pacotes-titulo"><div class="container">' +
-        '<div class="section-head section-head--row" data-reveal><div style="display:grid;gap:14px"><span class="eyebrow">Pacotes</span><h2 id="pacotes-titulo">Escolha até onde a Lucerna vai</h2></div><a class="btn btn-outline" href="pacotes.html">Comparar item a item ' + SETA + '</a></div>' +
+        '<div class="section-head section-head--row" data-reveal><div style="display:grid;gap:14px"><span class="eyebrow">Pacotes</span><h2 id="pacotes-titulo">Escolha até onde a Green House vai</h2></div><a class="btn btn-outline" href="pacotes.html">Comparar item a item ' + SETA + '</a></div>' +
         '<div class="packages">' + L.PACOTES.map(function (pk, i) {
           var n = L.ITENS.filter(function (it) { return it[2 + i]; }).length;
           return '<article class="package' + (i === 2 ? " package--featured" : "") + '" data-reveal style="--d:' + (i * 0.12) + 's">' +
@@ -418,7 +418,7 @@
       var f = form.elements, proj = L.porId(f.projeto.value), pac = L.PACOTES.filter(function (x) { return x.id === f.pacote.value; })[0];
       var terreno = form.querySelector('input[name="terreno"]:checked').value;
       if (terreno !== "Ainda não" && f.largura.value && f.profundidade.value) terreno += ", " + f.largura.value + " x " + f.profundidade.value + " m";
-      var linhas = ["Olá, Lucerna! Quero um orçamento.", "", "Nome: " + f.nome.value.trim(), "Telefone: " + f.telefone.value.trim(), "Cidade: " + f.cidade.value.trim() + "/" + f.uf.value,
+      var linhas = ["Olá, Green House! Quero um orçamento.", "", "Nome: " + f.nome.value.trim(), "Telefone: " + f.telefone.value.trim(), "Cidade: " + f.cidade.value.trim() + "/" + f.uf.value,
         "Projeto: " + (proj ? proj.nome : "Ainda não escolhi"), "Pacote: " + (pac ? pac.nome : "Quero ajuda para escolher"), "Terreno: " + terreno];
       if (f.mensagem.value.trim()) linhas.push("", f.mensagem.value.trim());
       var texto = linhas.join("\n"), wa = (CFG.whatsapp || "").replace(/\D/g, "");

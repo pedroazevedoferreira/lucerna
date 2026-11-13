@@ -1,0 +1,136 @@
+/* Green House v2 — camada visual das páginas internas.
+   Leva a linguagem da página inicial (janela em forma de casa, traço dourado, luz) para
+   catálogo, projeto, pacotes, Light Steel Frame, Sobre e Contato. Complementa styles.css (v1). */
+
+/* =========================================================
+   Cabeçalho das páginas: texto + "janela da casa"
+   ========================================================= */
+.page-hero.page-hero--janela {
+  background:
+    radial-gradient(circle at 82% 30%, rgba(232, 189, 97, .16), rgba(232, 189, 97, 0) 46%),
+    var(--faixa);
+  color: var(--texto);
+}
+.page-hero--janela::before { display: none; }
+.page-hero--janela .container.janela-grid {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  align-items: center; gap: clamp(32px, 6vw, 80px);
+  padding-block: clamp(48px, 7vw, 88px) clamp(40px, 6vw, 72px);
+}
+.page-hero--janela .janela-texto { display: grid; gap: 18px; align-content: center; }
+.page-hero--janela h1 { color: var(--floresta); max-width: 15ch; font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.05; }
+.page-hero--janela p { color: var(--texto-suave); max-width: 46ch; font-size: 1.1rem; }
+.page-hero--janela .eyebrow { color: var(--ouro-escuro); display: inline-flex; align-items: center; gap: 12px; }
+.page-hero--janela .eyebrow::after { content: ""; width: 36px; height: 1px; background: var(--madeira); }
+
+.janela-foto { position: relative; margin: 0; aspect-ratio: 5 / 4.4; max-height: 520px; width: 100%; justify-self: center; }
+.janela-recorte {
+  position: absolute; inset: 0;
+  clip-path: polygon(50% 0, 100% 34%, 100% 100%, 0 100%, 0 34%);
+  background: var(--areia);
+  animation: janela-revela 1.3s cubic-bezier(.2, .7, .2, 1) .5s both;
+}
+.janela-recorte img {
+  width: 100%; height: 100%; object-fit: cover;
+  animation: janela-zoom 14s cubic-bezier(.2, .5, .3, 1) both;
+}
+@keyframes janela-revela { from { clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%); } }
+@keyframes janela-zoom { from { transform: scale(1.14); } to { transform: none; } }
+.janela-traco { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); overflow: visible; pointer-events: none; }
+.janela-traco polygon, .janela-traco line {
+  fill: none; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0;
+  animation: janela-traco 1.6s cubic-bezier(.65, .05, .25, 1) both;
+}
+.janela-traco polygon { stroke: var(--ouro-escuro); stroke-width: 1.6; stroke-linejoin: round; }
+.janela-traco line { stroke: var(--madeira); stroke-width: 1; animation-delay: .4s; }
+@keyframes janela-traco { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.janela-foto figcaption {
+  position: absolute; right: 0; bottom: -28px;
+  font-size: .72rem; color: var(--texto-suave);
+}
+
+@media (max-width: 860px) {
+  .page-hero--janela .container.janela-grid { grid-template-columns: 1fr; }
+  .janela-foto { max-width: 440px; aspect-ratio: 5 / 4; margin-bottom: 24px; }
+  .page-hero--janela h1 { max-width: 18ch; }
+}
+
+/* =========================================================
+   Detalhes comuns
+   ========================================================= */
+/* fio dourado antes dos "eyebrows" dos títulos de seção */
+.section-head > .eyebrow, .section-head > div > .eyebrow, .split-text > .eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.section-head > .eyebrow::before, .section-head > div > .eyebrow::before, .split-text > .eyebrow::before {
+  content: ""; width: 26px; height: 2px; background: var(--champagne); border-radius: 2px;
+}
+.section--dark .split-text > .eyebrow::before { background: var(--champagne); }
+
+/* fotos das seções: leve zoom ao passar o mouse e moldura com sombra */
+.split-media { box-shadow: 0 24px 60px rgba(16, 43, 51, .14); }
+.split-media img { transition: transform 1s cubic-bezier(.2, .7, .2, 1); }
+.split-media:hover img { transform: scale(1.04); }
+
+/* =========================================================
+   Catálogo e cartões de projeto
+   ========================================================= */
+.project-card {
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s ease;
+}
+.project-card::after {           /* fio dourado que corre no topo ao passar o mouse */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; z-index: 3;
+  background: linear-gradient(90deg, var(--champagne), var(--ouro-escuro));
+  transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+}
+.project-card:hover, .project-card:focus-within { transform: translateY(-6px); box-shadow: 0 26px 50px rgba(16, 43, 51, .16); }
+.project-card:hover::after, .project-card:focus-within::after { transform: scaleX(1); }
+.project-card .price-value { color: var(--floresta); }
+.project-card .card-tag { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover, .project-card:focus-within { transform: none; }
+}
+
+/* filtros: painel com moldura mais leve */
+.filter-panel { box-shadow: 0 12px 34px rgba(16, 43, 51, .08); border-top: 3px solid var(--champagne); }
+
+/* =========================================================
+   Página do projeto
+   ========================================================= */
+.product-price {
+  background: var(--petroleo) !important; color: var(--offwhite);
+  border: 0 !important; box-shadow: 0 22px 50px rgba(16, 43, 51, .22);
+  position: relative; overflow: hidden;
+}
+.product-price::before {
+  content: ""; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 189, 97, .35), rgba(232, 189, 97, 0) 70%);
+  pointer-events: none;
+}
+.product-price .price-label, .product-price .price-sub { color: var(--areia) !important; position: relative; }
+.product-price .price-value { color: var(--champagne) !important; position: relative; }
+.product-price .btn { position: relative; }
+.spec-card { border-top: 3px solid var(--champagne); }
+
+/* =========================================================
+   Pacotes
+   ========================================================= */
+.package { transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s ease; }
+.package:hover { transform: translateY(-6px); box-shadow: 0 26px 50px rgba(16, 43, 51, .14); }
+.package--featured {
+  background: linear-gradient(160deg, var(--petroleo), #0b1f25) !important; color: var(--offwhite);
+  box-shadow: 0 0 0 1px rgba(232, 189, 97, .5), 0 30px 60px rgba(16, 43, 51, .3) !important;
+}
+.package--featured h3, .package--featured .price-value { color: var(--champagne) !important; }
+.package--featured p, .package--featured .package-for, .package--featured .price-sub,
+.package--featured .price-label, .package--featured li, .package--featured summary { color: var(--areia) !important; }
+@media (prefers-reduced-motion: reduce) { .package:hover { transform: none; } }
+
+/* =========================================================
+   Contato: formulário em cartão
+   ========================================================= */
+#contact-form {
+  background: var(--branco); padding: clamp(24px, 3.4vw, 44px);
+  border-radius: var(--raio); border-top: 3px solid var(--champagne);
+  box-shadow: 0 24px 60px rgba(16, 43, 51, .12);
+}
