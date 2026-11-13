@@ -1,4 +1,5 @@
 # Lucerna — site de casas e chalés em Light Steel Frame
+https://pedroazevedoferreira.github.io/green-house-casas-e-chales/
 
 Site de demonstração da **Lucerna Casas e Chalés**, feito para apresentação ao cliente.
 É um site estático (HTML, CSS e JavaScript puros, sem etapa de build).
