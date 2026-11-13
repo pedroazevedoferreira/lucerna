@@ -1,30 +1,36 @@
 /* Green House v2 — camada visual das páginas internas. Complementa styles.css (v1). */
 
-/* =========================================================
-   Cabeçalho das páginas: texto + foto retangular
-   ========================================================= */
+/* Full-bleed photo heroes on interior pages. The home page keeps its own intro. */
 .page-hero.page-hero--janela {
+  min-height: max(620px, calc(100svh - 130px));
+  background: #0b1f25;
+  color: var(--offwhite);
+}
+.page-hero--janela::before {
   background:
-    radial-gradient(circle at 82% 30%, rgba(232, 189, 97, .16), rgba(232, 189, 97, 0) 46%),
-    var(--faixa);
-  color: var(--texto);
+    linear-gradient(90deg, rgba(11, 31, 37, .82) 0%, rgba(11, 31, 37, .62) 42%, rgba(11, 31, 37, .12) 100%),
+    linear-gradient(0deg, rgba(11, 31, 37, .38), transparent 42%);
 }
-.page-hero--janela::before { display: none; }
 .page-hero--janela .container.janela-grid {
-  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-  align-items: center; gap: clamp(32px, 6vw, 80px);
-  padding-block: clamp(48px, 7vw, 88px) clamp(40px, 6vw, 72px);
+  position: static; z-index: auto;
+  display: flex; align-items: center;
+  min-height: max(620px, calc(100svh - 130px));
+  padding-block: clamp(64px, 9vh, 112px);
 }
-.page-hero--janela .janela-texto { display: grid; gap: 18px; align-content: center; }
-.page-hero--janela h1 { color: var(--floresta); max-width: 15ch; font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.05; }
-.page-hero--janela p { color: var(--texto-suave); max-width: 46ch; font-size: 1.1rem; }
-.page-hero--janela .eyebrow { color: var(--ouro-escuro); display: inline-flex; align-items: center; gap: 12px; }
-.page-hero--janela .eyebrow::after { content: ""; width: 36px; height: 1px; background: var(--madeira); }
+.page-hero--janela .janela-texto {
+  position: relative; z-index: 2;
+  display: grid; gap: 18px; align-content: center;
+  max-width: 650px;
+}
+.page-hero--janela h1 { color: var(--offwhite); max-width: 15ch; font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.05; }
+.page-hero--janela p { color: rgba(243, 240, 232, .92); max-width: 46ch; font-size: 1.1rem; }
+.page-hero--janela .eyebrow { color: var(--champagne); display: inline-flex; align-items: center; gap: 12px; }
+.page-hero--janela .eyebrow::after { content: ""; width: 36px; height: 1px; background: var(--champagne); }
 
-.janela-foto { position: relative; margin: 0; aspect-ratio: 5 / 4.4; max-height: 520px; width: 100%; justify-self: center; }
+.janela-foto { position: absolute; z-index: 0; inset: 0; margin: 0; width: 100%; height: 100%; }
 .janela-recorte {
   position: absolute; inset: 0;
-  overflow: hidden; border-radius: 4px;
+  overflow: hidden;
   background: var(--areia);
 }
 .janela-recorte img {
@@ -34,14 +40,17 @@
 @keyframes janela-zoom { from { transform: scale(1.14); } to { transform: none; } }
 .janela-traco { display: none; }
 .janela-foto figcaption {
-  position: absolute; right: 0; bottom: -28px;
-  font-size: .72rem; color: var(--texto-suave);
+  position: absolute; right: clamp(24px, 5vw, 72px); bottom: 18px;
+  z-index: 2; font-size: .72rem; color: rgba(243, 240, 232, .82);
 }
 
 @media (max-width: 860px) {
-  .page-hero--janela .container.janela-grid { grid-template-columns: 1fr; }
-  .janela-foto { max-width: 440px; aspect-ratio: 5 / 4; margin-bottom: 24px; }
+  .page-hero--janela.page-hero { min-height: max(600px, calc(100svh - 110px)); }
+  .page-hero--janela .container.janela-grid { min-height: max(600px, calc(100svh - 110px)); }
   .page-hero--janela h1 { max-width: 18ch; }
+  .page-hero--janela::before {
+    background: linear-gradient(0deg, rgba(11, 31, 37, .82) 0%, rgba(11, 31, 37, .5) 58%, rgba(11, 31, 37, .22) 100%);
+  }
 }
 
 /* =========================================================
