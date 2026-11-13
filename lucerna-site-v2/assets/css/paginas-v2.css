@@ -2,7 +2,7 @@
 
 /* Full-bleed photo heroes on interior pages. The home page keeps its own intro. */
 .page-hero.page-hero--janela {
-  min-height: max(620px, calc(100svh - 130px));
+  min-height: clamp(460px, 58svh, 560px);
   background: #0b1f25;
   color: var(--offwhite);
 }
@@ -14,8 +14,8 @@
 .page-hero--janela .container.janela-grid {
   position: static; z-index: auto;
   display: flex; align-items: center;
-  min-height: max(620px, calc(100svh - 130px));
-  padding-block: clamp(64px, 9vh, 112px);
+  min-height: clamp(460px, 58svh, 560px);
+  padding-block: clamp(48px, 7vh, 80px);
 }
 .page-hero--janela .janela-texto {
   position: relative; z-index: 2;
@@ -45,8 +45,9 @@
 }
 
 @media (max-width: 860px) {
-  .page-hero--janela.page-hero { min-height: max(600px, calc(100svh - 110px)); }
-  .page-hero--janela .container.janela-grid { min-height: max(600px, calc(100svh - 110px)); }
+  .page-hero--janela.page-hero { min-height: clamp(480px, 70svh, 600px); }
+  .page-hero--janela .container.janela-grid { min-height: clamp(480px, 70svh, 600px); }
+  .page-hero--janela .container.janela-grid { padding-block: 48px; }
   .page-hero--janela h1 { max-width: 18ch; }
   .page-hero--janela::before {
     background: linear-gradient(0deg, rgba(11, 31, 37, .82) 0%, rgba(11, 31, 37, .5) 58%, rgba(11, 31, 37, .22) 100%);
