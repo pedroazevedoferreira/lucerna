@@ -241,6 +241,29 @@
     return '<svg class="plan-svg" viewBox="0 0 ' + (W + pad * 2) + ' ' + (H + pad * 2) + '" role="img" aria-label="Planta baixa ilustrativa, ' + pl.nome + '">' + cota + '<rect x="' + pad + '" y="' + pad + '" width="' + W + '" height="' + H + '" fill="none" stroke="#243B32" stroke-width="6"/>' + c + '</svg>';
   }
 
+  function planta3DSVG(pl) {
+    var pad = 42, parede = 30, sx = Math.min(30, 540 / (pl.w + pl.h)), sy = sx * .56;
+    var largura = (pl.w + pl.h) * sx + pad * 2, altura = (pl.w + pl.h) * sy + parede + pad * 2;
+    var pt = function (x, y, z) { return [pad + (x - y) * sx + pl.h * sx, pad + parede + (x + y) * sy - z]; };
+    var poly = function (pts) { return pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); };
+    var a = pt(0, 0, 0), b = pt(pl.w, 0, 0), c = pt(pl.w, pl.h, 0), d = pt(0, pl.h, 0);
+    var A = pt(0, 0, parede), B = pt(pl.w, 0, parede), C = pt(pl.w, pl.h, parede), D = pt(0, pl.h, parede);
+    var faces = '<polygon points="' + poly([B, C, c, b]) + '" fill="#BFA47E" stroke="#70583F" stroke-width="1.5"/>' +
+      '<polygon points="' + poly([C, D, d, c]) + '" fill="#A98E6D" stroke="#70583F" stroke-width="1.5"/>' +
+      '<polygon points="' + poly([A, B, C, D]) + '" fill="#E9E0D0" stroke="#243B32" stroke-width="2"/>';
+    var cores = ["#F8F4EA", "#EDE4D5", "#F4EBDD", "#E5EADF"];
+    var rooms = pl.comodos.map(function (r, i) {
+      var n = r[0], x = r[1], y = r[2], w = r[3], h = r[4];
+      var q = [pt(x, y, parede + .5), pt(x + w, y, parede + .5), pt(x + w, y + h, parede + .5), pt(x, y + h, parede + .5)];
+      var mid = pt(x + w / 2, y + h / 2, parede + 1), fs = Math.max(8, Math.min(12, sx * .42));
+      var textWidth = Math.max(26, Math.min((w + h) * sx * .7, 180));
+      return '<g><polygon points="' + poly(q) + '" fill="' + cores[i % cores.length] + '" stroke="#8E7960" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<text x="' + mid[0].toFixed(1) + '" y="' + (mid[1] - 1).toFixed(1) + '" text-anchor="middle" textLength="' + textWidth.toFixed(1) + '" lengthAdjust="spacingAndGlyphs" font-size="' + fs.toFixed(1) + '" font-weight="700" fill="#243B32" font-family="Manrope, sans-serif">' + n + '</text>' +
+        '<text x="' + mid[0].toFixed(1) + '" y="' + (mid[1] + fs + 2).toFixed(1) + '" text-anchor="middle" font-size="' + Math.max(7, fs - 2).toFixed(1) + '" fill="#594638" font-family="Manrope, sans-serif">' + L.num(w * h, 1) + ' m²</text></g>';
+    }).join("");
+    return '<svg class="plan-svg plan-svg--3d" viewBox="0 0 ' + largura.toFixed(1) + ' ' + altura.toFixed(1) + '" role="img" aria-label="Planta 3D ilustrativa, ' + pl.nome + '"><ellipse cx="' + (largura / 2).toFixed(1) + '" cy="' + (altura - 22).toFixed(1) + '" rx="' + ((pl.w + pl.h) * sx * .4).toFixed(1) + '" ry="10" fill="#102B33" fill-opacity=".08"/>' + faces + rooms + '<polygon points="' + poly([A, B, C, D]) + '" fill="none" stroke="#243B32" stroke-width="2.4" stroke-linejoin="round"/></svg>';
+  }
+
   /* 5 itens de destaque por pacote: o 1º lista o que inclui; os seguintes, "Tudo do anterior" + o que acrescentam */
   function destaques(i) {
     if (i === 0) return L.ITENS.filter(function (it) { return it[2]; }).slice(0, 5).map(function (it) { return it[1]; });
@@ -254,7 +277,12 @@
     document.title = p.nome + " | Green House Casas e Chalés";
     $$("[data-crumb-atual]").forEach(function (el) { el.textContent = p.nome; });
 
-    var abas = [{ id: "fachada", rot: "Fachada" }].concat(p.plantas.map(function (pl, i) { return { id: "planta-" + i, rot: "Planta" + (p.plantas.length > 1 ? " · " + pl.nome : "") }; }));
+    var abas = [{ id: "fachada", rot: "Fachada" }, { id: "interior", rot: "Interior" }];
+    p.plantas.forEach(function (pl, i) {
+      var andar = p.plantas.length > 1 ? " · " + pl.nome : "";
+      abas.push({ id: "planta2d-" + i, rot: "Planta 2D" + andar });
+      abas.push({ id: "planta3d-" + i, rot: "Planta 3D" + andar });
+    });
     var comodos = p.plantas.map(function (pl) {
       return (p.plantas.length > 1 ? '<li class="rooms-floor">' + pl.nome + '</li>' : "") + pl.comodos.filter(function (r) { return r[0] !== "Circulação" && r[0] !== "Escada"; }).map(function (r) { return '<li><span>' + r[0] + '</span><span>' + L.num(r[3] * r[4], 2) + ' m²</span></li>'; }).join("");
     }).join("");
@@ -322,8 +350,14 @@
     var mostrar = function (id) {
       $$(".tab", detalhe).forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.tab === id)); });
       var html;
-      if (id === "fachada") html = '<figure class="figure figure--stage">' + img(p.img, p.alt, p.foco, "(max-width: 960px) 100vw, 760px", ' loading="eager"') + '<figcaption>Imagem ilustrativa</figcaption></figure>';
-      else html = '<div class="plan-box">' + plantaSVG(p.plantas[+id.split("-")[1]]) + '<p class="form-note">Planta ilustrativa. Medidas sujeitas a ajuste no projeto executivo.</p></div>';
+      if (id === "fachada") html = '<figure class="figure figure--stage">' + img(p.img, p.alt, p.foco, "(max-width: 960px) 100vw, 760px", ' loading="eager"') + '<figcaption>Fachada ilustrativa</figcaption></figure>';
+      else if (id === "interior") html = '<figure class="figure figure--stage">' + img(p.interior, "Interior ilustrativo do projeto " + p.nome, "50% 50%", "(max-width: 960px) 100vw, 760px", ' loading="eager"') + '<figcaption>Imagem ilustrativa gerada por IA; acabamentos e disposição podem variar.</figcaption></figure>';
+      else {
+        var partes = id.split("-"), tipoPlanta = partes[0] === "planta3d" ? "3d" : "2d", andarIndex = +partes[1], planta = p.plantas[andarIndex], e3D = tipoPlanta === "3d";
+        html = '<div class="plan-box"><h3 class="plan-title">' + (e3D ? "Planta 3D" : "Planta 2D") + (p.plantas.length > 1 ? " · " + planta.nome : "") + '</h3>' +
+          (e3D ? planta3DSVG(planta) : plantaSVG(planta)) +
+          '<p class="form-note">Planta ilustrativa baseada na distribuição cadastrada. Medidas sujeitas ao projeto executivo.</p></div>';
+      }
       palco.classList.remove("is-swapping"); void palco.offsetWidth;
       palco.innerHTML = html; palco.classList.add("is-swapping");
     };

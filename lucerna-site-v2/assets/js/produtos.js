@@ -43,6 +43,7 @@ window.LUCERNA = (function () {
     {
       id: "chale-aurora", nome: "Chalé Aurora", tipo: "chale", tipoLabel: "Chalé", estilo: "A-frame",
       img: "projeto-chale-aframe", foco: "50% 40%", destaque: true,
+      interior: "projeto-chale-aurora-interior",
       alt: "Chalé A-frame com telhado verde, fachada de vidro e deck de madeira ao entardecer",
       frase: "Telhado triangular, fachada de vidro e deck para a vista.",
       descricao: "Chalé A-frame compacto, com sala e cozinha integradas voltadas para a fachada de vidro, quarto no térreo e mezanino. Pensado para serra, campo ou aluguel por temporada.",
@@ -57,6 +58,7 @@ window.LUCERNA = (function () {
     {
       id: "chale-serra", nome: "Chalé Serra", tipo: "chale", tipoLabel: "Chalé", estilo: "A-frame",
       img: "home-hero", foco: "72% 50%", destaque: false,
+      interior: "projeto-chale-serra-interior",
       alt: "Chalé A-frame de madeira e vidro sobre base de pedra, em meio à mata da serra",
       frase: "A-frame amplo sobre base de pedra, com dois banheiros.",
       descricao: "Versão maior do A-frame, com base em pedra, suíte de hóspedes no térreo e quarto no mezanino. Boa para terrenos com vista e leve inclinação.",
@@ -71,6 +73,7 @@ window.LUCERNA = (function () {
     {
       id: "casa-refugio", nome: "Casa Refúgio", tipo: "casa", tipoLabel: "Casa", estilo: "Térrea",
       img: "contato-refugio", foco: "75% 50%", destaque: false,
+      interior: "projeto-casa-refugio-interior",
       alt: "Casa térrea com pilares de madeira e pedra, iluminada ao anoitecer em meio à mata",
       frase: "Térrea compacta, com suíte e varanda coberta.",
       descricao: "Casa térrea compacta com sala e cozinha integradas, suíte e quarto de hóspedes. Cabe em terrenos urbanos de 10 metros de frente.",
@@ -84,6 +87,7 @@ window.LUCERNA = (function () {
     {
       id: "casa-jardim", nome: "Casa Jardim", tipo: "casa", tipoLabel: "Casa", estilo: "Térrea",
       img: "projeto-casa-contemporanea", foco: "50% 55%", destaque: true,
+      interior: "projeto-casa-jardim-interior",
       alt: "Casa térrea com telhado verde, varanda com pilares de madeira e jardim",
       frase: "Três quartos e varanda integrada à área social.",
       descricao: "Casa térrea para família, com três quartos, sala ampla aberta para a varanda e cozinha separada da área de serviço.",
@@ -97,6 +101,7 @@ window.LUCERNA = (function () {
     {
       id: "casa-horizonte", nome: "Casa Horizonte", tipo: "casa", tipoLabel: "Casa", estilo: "Sobrado",
       img: "projeto-casa-familiar", foco: "55% 45%", destaque: true,
+      interior: "projeto-casa-horizonte-interior",
       alt: "Sobrado moderno com fachada branca, painel de madeira, varanda envidraçada e garagem coberta",
       frase: "Sobrado com duas suítes e garagem coberta.",
       descricao: "Sobrado com área social no térreo e três quartos no pavimento superior, sendo duas suítes. Ocupa pouco terreno e tem garagem coberta.",

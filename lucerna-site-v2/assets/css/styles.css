@@ -600,7 +600,9 @@ main, .site-footer { overflow-x: clip; }
 @keyframes swap { from { opacity: 0; transform: scale(1.02); } }
 .figure--stage img { aspect-ratio: 16 / 10; }
 .plan-box { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 16px; overflow-x: auto; }
+.plan-title { margin: 0 0 12px; color: var(--floresta); font-size: 1rem; }
 .plan-svg { display: block; width: 100%; height: auto; min-width: 300px; max-height: 560px; }
+.plan-svg--3d { max-height: 600px; }
 .plan-svg .room rect { transition: fill .2s ease; }
 .plan-svg .room:hover rect { fill: #F3EAD8; }
 .spec-card { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 24px; display: grid; gap: 14px; }
