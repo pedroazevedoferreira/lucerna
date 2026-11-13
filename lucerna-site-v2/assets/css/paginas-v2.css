@@ -1,9 +1,7 @@
-/* Green House v2 — camada visual das páginas internas.
-   Leva a linguagem da página inicial (janela em forma de casa, traço dourado, luz) para
-   catálogo, projeto, pacotes, Light Steel Frame, Sobre e Contato. Complementa styles.css (v1). */
+/* Green House v2 — camada visual das páginas internas. Complementa styles.css (v1). */
 
 /* =========================================================
-   Cabeçalho das páginas: texto + "janela da casa"
+   Cabeçalho das páginas: texto + foto retangular
    ========================================================= */
 .page-hero.page-hero--janela {
   background:
@@ -26,24 +24,15 @@
 .janela-foto { position: relative; margin: 0; aspect-ratio: 5 / 4.4; max-height: 520px; width: 100%; justify-self: center; }
 .janela-recorte {
   position: absolute; inset: 0;
-  clip-path: polygon(50% 0, 100% 34%, 100% 100%, 0 100%, 0 34%);
+  overflow: hidden; border-radius: 4px;
   background: var(--areia);
-  animation: janela-revela 1.3s cubic-bezier(.2, .7, .2, 1) .5s both;
 }
 .janela-recorte img {
   width: 100%; height: 100%; object-fit: cover;
   animation: janela-zoom 14s cubic-bezier(.2, .5, .3, 1) both;
 }
-@keyframes janela-revela { from { clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%); } }
 @keyframes janela-zoom { from { transform: scale(1.14); } to { transform: none; } }
-.janela-traco { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); overflow: visible; pointer-events: none; }
-.janela-traco polygon, .janela-traco line {
-  fill: none; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0;
-  animation: janela-traco 1.6s cubic-bezier(.65, .05, .25, 1) both;
-}
-.janela-traco polygon { stroke: var(--ouro-escuro); stroke-width: 1.6; stroke-linejoin: round; }
-.janela-traco line { stroke: var(--madeira); stroke-width: 1; animation-delay: .4s; }
-@keyframes janela-traco { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.janela-traco { display: none; }
 .janela-foto figcaption {
   position: absolute; right: 0; bottom: -28px;
   font-size: .72rem; color: var(--texto-suave);
